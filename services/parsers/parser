@@ -1,0 +1,15 @@
+import requests
+from bs4 import BeautifulSoup
+
+new_n = []
+html = 'https://auto.ru/cars/all/'  # Kio Rio2017
+r = requests.get(html)
+r.encoding = 'unicode'
+soup = BeautifulSoup(r.text, 'html.parser' )
+n = soup.find_all(class_="ListingItemPrice-module__content")
+
+for i in range(len(n)):
+    if n[i].find('span') is not None:
+        new_n.append(n[i].text.replace(u'\xa0',' ').replace(u'\u2009', ''))
+
+print(new_n)
