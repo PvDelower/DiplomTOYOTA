@@ -13,15 +13,15 @@ from src.api.users.crud import (  # isort:skip
     delete_user,
 )
 
-users_namespace = Namespace("users")
+users_namespace = Namespace("cars")
 
 
 user = users_namespace.model(
     "car",
     {
         "id": fields.Integer(readOnly=True),
-        "username": fields.String(required=True),
-        "email": fields.String(required=True),
+        "Brand": fields.String(required=True),
+        "Model": fields.String(required=True),
         "created_date": fields.DateTime,
     },
 )
